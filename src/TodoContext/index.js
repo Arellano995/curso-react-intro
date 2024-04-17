@@ -8,6 +8,8 @@ function TodoProvider({children}) {
 
   const [searchValue, setSearchValue] = React.useState('');
 
+  const [openModal, setOpenModal] = React.useState(false);
+
   // const defaultTodos = [ 
   //   {text:'cortar cebolla', completed: false},
   //   {text:'cortar', completed: false},
@@ -38,6 +40,11 @@ function TodoProvider({children}) {
     return todoText.includes(searchText);
   });
 
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({ text, completed: false});
+    saveTodos(newTodos);
+  }
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
@@ -61,10 +68,13 @@ function TodoProvider({children}) {
                 searchValue,
                 setSearchValue,
                 searchedTodos,
+                addTodo,
                 completeTodo,
                 deleteTodo,
                 loading,
-                error
+                error,
+                openModal,
+                setOpenModal,
             }}>
                 {children}
             </TodoContext.Provider>
