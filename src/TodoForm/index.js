@@ -32,6 +32,7 @@ function TodoForm(){
                 placeholder="Escribir todo"
                 value={newTodosValue}
                 onChange={onChange}
+                required
             />
             <div className="TodoForm-buttonContainer">
                 <button type="" className="TodoForm-button--cansel" onClick={onCancel}>Cancelar</button>
